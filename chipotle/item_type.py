@@ -12,7 +12,7 @@ class Item(object):
 
     # $16.68
     def parse_price(self, price):
-        return float(price[1:])
+        return float(price[1:].strip())
 
     def to_string(self):
         return self.name + " " + self.price
@@ -46,11 +46,9 @@ class Food(Item):
 
 class Beverage(Item):
     def __init__(self, name, desc, price):
-        self.name = name
+        super(Beverage, self).__init__(name, price)
         self.desc = desc[1:-1]
-        self.price = price
-
 
 class Side(Item):
-    def __init__(self):
-        super().__init__(self)
+    def __init__(self, name, price):
+        super(Side, self).__init__(name, price)
